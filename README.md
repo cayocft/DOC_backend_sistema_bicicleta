@@ -251,7 +251,7 @@ https://backend-registroformulario.onrender.com/api-backend-prueba
 
 ---
 
-## 🚀 Endpoints Estudiante
+## 🚀 Endpoints Acceso
 ### 1. Crear usuario de acceso
 
 * **Método:** `POST`
