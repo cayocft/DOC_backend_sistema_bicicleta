@@ -313,7 +313,6 @@ https://backend-registroformulario.onrender.com/api-backend-prueba
 {
   "identificador": "lincoyan32221",
   "nombre": "Lincoyan",
-  "descripcion": "CFT Campus lincoyan",
   "direccion": "lincoyan 3222",
   "capacidad": 20,
 }
