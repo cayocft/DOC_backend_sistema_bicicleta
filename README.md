@@ -157,7 +157,8 @@ https://backend-registroformulario.onrender.com/api-backend-prueba
   "marca": "Trek",
   "modelo": "FX 1",
   "color": "Rojo",
-  "estacionamiento": "A1"
+  "estacionamiento": "A1",
+  "establecimiento": "lincoyan"
 }
 ```
 
@@ -201,7 +202,8 @@ https://backend-registroformulario.onrender.com/api-backend-prueba
     "modelo": "FX 1",
     "color": "Rojo",
     "estacionamiento": "A1",
-    "fechaRegistro": "2025-10-16T03:15:00.000Z"
+    "fechaRegistro": "2025-10-16T03:15:00.000Z",
+    "identificador": "6500abc1234567890abcdef1"
   }
 ]
 ```
@@ -226,7 +228,16 @@ https://backend-registroformulario.onrender.com/api-backend-prueba
 
 ---
 
-### 5. Actualizar bicicleta por ID
+### 5. Listar bicicletas por establecimiento (identificador)
+
+* **Método:** `GET`
+* **Ruta:** `/bicicleta/establecimiento/:identificador`
+* **Descripción:** Lista todas las bicicletas de un Establecimiento.
+* **Ejemplo:** `/bicicleta/establecimiento/acacias2551`
+
+---
+
+### 6. Actualizar bicicleta por ID
 
 * **Método:** `PUT`
 * **Ruta:** `/bicicleta/:id`
@@ -243,7 +254,7 @@ https://backend-registroformulario.onrender.com/api-backend-prueba
 
 ---
 
-### 6. Eliminar bicicleta por ID
+### 7. Eliminar bicicleta por ID
 
 * **Método:** `DELETE`
 * **Ruta:** `/bicicleta/:id`
@@ -251,7 +262,7 @@ https://backend-registroformulario.onrender.com/api-backend-prueba
 
 ---
 
-## 🚀 Endpoints Acceso
+## 🚀 Endpoints Estudiante
 ### 1. Crear usuario de acceso
 
 * **Método:** `POST`
@@ -286,135 +297,95 @@ https://backend-registroformulario.onrender.com/api-backend-prueba
 }
 ```
 
-### 2. Login (Autenticación)
+---
+
+## 📘 Endpoints Establecimiento
+
+### 1. Registrar Establecimiento
 
 * **Método:** `POST`
-* **Ruta:** `/acceso/login`
-* **Descripción:** `Inicia sesión con correo y contraseña.`
-
+* **Ruta:** `/establecimiento/crear`
+* **Descripción:** Registra un establecimiento.
 * **Body (JSON):**
 
 ```json
 {
-  "correo": "pedro.morales@example.com",
-  "password": "123456"
+  "identificador": "lincoyan32221",
+  "nombre": "Lincoyan",
+  "descripcion": "CFT Campus lincoyan",
+  "direccion": "lincoyan 3222",
+  "capacidad": 20,
 }
 ```
 
-* **Respuesta (200):**
+* **Respuesta (201):**
 
 ```json
 {
-  "message": "Acceso concedido",
-  "usuario": {
-    "_id": "6502abc1234567890abcdef1",
-    "nombre": "Pedro",
-    "apellido": "Morales",
-    "correo": "pedro.morales@example.com"
+  "message": "Establecimiento Registrado",
+  "establecimiento": {
+    "_id": "691fdee9e500945d68266592",
+    "identificador": "lincoyan32221",
+    "nombre": "Lincoyan",
+    "direccion": "lincoyan 3222",
+    "capacidad": 20,
+    "fechaRegistro": "2025-11-21T03:39:21.629Z",
+    "createdAt": "2025-11-21T03:39:21.632Z",
+    "updatedAt": "2025-11-21T03:39:21.632Z",
+    "__v": 0
   }
 }
 ```
+---
 
-### 3. Listar todos los usuarios
+### 2. Listar todos los establecimiento
 
 * **Método:** `GET`
-* **Ruta:** `/acceso/obtener`
-* **Descripción:** `Lista todos los usuarios encargados del control de acceso.`
-
+* **Ruta:** `/establecimiento/listar`
+* **Descripción:** Retorna todas los establecimiento registradas.
 * **Respuesta (200):**
 
 ```json
 [
   {
-    "_id": "6502abc1234567890abcdef1",
-    "nombre": "Pedro",
-    "apellido": "Morales",
-    "correo": "pedro.morales@example.com",
-    "rut": "12.345.678-9"
-  }
+    "_id": "690d0039ca618e39c846a8ac",
+    "nombre": "CFT Técnica Arica",
+    "direccion": "Av. Siempre Viva 123",
+    "capacidad": 20,
+    "bicicletas": [],
+    "fechaRegistro": "2025-11-06T20:08:25.747Z",
+    "__v": 0
+  },
+  ...
 ]
 ```
-
-
-### 4. Obtener usuario por ID
+### 3. Obtener establecimiento por ID
 
 * **Método:** `GET`
-* **Ruta:** `/acceso/:id`
-* **Descripción:** `Obtiene información detallada de un usuario.`
+* **Ruta:** `/bicicleta/:id`
+* **Descripción:** Obtiene los datos de un establecimiento por id específica.
+* **Ejemplo:** `/establecimiento/691f6de923d31003d07fb28f`
 
-* **Ejemplo:**
+---
 
-`/acceso/6502abc1234567890abcdef1`
-
-
-* **Respuesta (200):**
-
-```json
-{
-  "_id": "6502abc1234567890abcdef1",
-  "nombre": "Pedro",
-  "apellido": "Morales",
-  "correo": "pedro.morales@example.com",
-  "rut": "12.345.678-9"
-}
-```
-
-### 5. Actualizar usuario por ID
+### 4. Actualizar estab por ID
 
 * **Método:** `PUT`
-* **Ruta:** `/acceso/:id`
-* **Descripción:** `Actualiza los datos del usuario.`
-
+* **Ruta:** `/establecimiento/actualizar/:id`
+* **Ejemplo:** `/establecimiento/actualizar/690d0039ca618e39c846a8ac`
 * **Body (JSON):**
 
 ```json
 {
-  "nombre": "Pedro Andrés",
-  "apellido": "Morales Soto",
-  "correo": "pedro.andres@example.com"
+  "identificador": "linco776",
+  "nombre": "Lincoyan",
+  "descripcion": "CFT Campus lincoyan",
+  "direccion": "lincoyan 3222",
+  "capacidad": 20,
 }
 ```
 
-* **Respuesta (200):**
-
-```json
-{
-  "message": "Usuario actualizado",
-  "usuario": {
-    "_id": "6502abc1234567890abcdef1",
-    "nombre": "Pedro Andrés",
-    "apellido": "Morales Soto",
-    "correo": "pedro.andres@example.com",
-    "rut": "12.345.678-9"
-  }
-}
-```
-
-### 6. Eliminar usuario por ID
-
-* **Método:** `DELETE`
-* **Ruta:** ````
-* **Descripción:** `Elimina un usuario registrado en el sistema.`
-
-* **Ejemplo:**
-
-`/acceso/6502abc1234567890abcdef1`
-
-
-* **Respuesta (200):**
-
-```json
-{
-  "message": "Usuario eliminado",
-  "usuario": {
-    "_id": "6502abc1234567890abcdef1",
-    "nombre": "Pedro Andrés",
-    "apellido": "Morales Soto",
-    "correo": "pedro.andres@example.com",
-    "rut": "12.345.678-9"
-  }
-}
-```
+---
 
 ### 🔹 Notas importantes
 
