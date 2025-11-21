@@ -158,7 +158,7 @@ https://backend-registroformulario.onrender.com/api-backend-prueba
   "modelo": "FX 1",
   "color": "Rojo",
   "estacionamiento": "A1",
-  "establecimiento": "lincoyan"
+  "identificador": "lincoyan"
 }
 ```
 
@@ -174,7 +174,8 @@ https://backend-registroformulario.onrender.com/api-backend-prueba
     "modelo": "FX 1",
     "color": "Rojo",
     "estacionamiento": "A1",
-    "fechaRegistro": "2025-10-16T03:15:00.000Z"
+    "fechaRegistro": "2025-10-16T03:15:00.000Z",
+    "identificador": "690d0039ca618e39c846a8ac"
   }
 }
 ```
