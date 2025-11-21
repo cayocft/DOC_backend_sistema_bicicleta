@@ -385,7 +385,170 @@ https://backend-registroformulario.onrender.com/api-backend-prueba
 }
 ```
 
----
+## 🚀 Endpoints Acceso
+### 1. Crear Acceso de acceso
+
+* **Método:** `POST`
+* **Ruta:** `/acceso/crear`
+* **Descripción:** `Registra un nuevo Acceso autorizado.`
+
+* **Body (JSON):**
+
+```json
+{
+  "nombre": "Pedro",
+  "apellido": "Morales",
+  "correo": "pedro.morales@example.com",
+  "rut": "12.345.678-9",
+  "password": "123456"
+}
+```
+* **Respuesta exitosa (201):**
+
+```json
+{
+  "message": "Usuario de acceso creado",
+  "usuario": {
+    "_id": "6502abc1234567890abcdef1",
+    "nombre": "Pedro",
+    "apellido": "Morales",
+    "correo": "pedro.morales@example.com",
+    "rut": "12.345.678-9",
+    "createdAt": "2025-11-16T03:00:00.000Z",
+    "updatedAt": "2025-11-16T03:00:00.000Z"
+  }
+}
+```
+
+### 2. Login (Autenticación)
+
+* **Método:** `POST`
+* **Ruta:** `/acceso/login`
+* **Descripción:** `Inicia sesión con correo y contraseña.`
+
+* **Body (JSON):**
+
+```json
+{
+  "correo": "pedro.morales@example.com",
+  "password": "123456"
+}
+```
+
+* **Respuesta (200):**
+
+```json
+{
+  "message": "Acceso concedido",
+  "usuario": {
+    "_id": "6502abc1234567890abcdef1",
+    "nombre": "Pedro",
+    "apellido": "Morales",
+    "correo": "pedro.morales@example.com"
+  }
+}
+```
+
+### 3. Listar todos los Accesos
+
+* **Método:** `GET`
+* **Ruta:** `/acceso/obtener`
+* **Descripción:** `Lista todos los usuarios encargados del control de acceso.`
+
+* **Respuesta (200):**
+
+```json
+[
+  {
+    "_id": "6502abc1234567890abcdef1",
+    "nombre": "Pedro",
+    "apellido": "Morales",
+    "correo": "pedro.morales@example.com",
+    "rut": "12.345.678-9"
+  }
+]
+```
+
+
+### 4. Obtener Acceso por ID
+
+* **Método:** `GET`
+* **Ruta:** `/acceso/:id`
+* **Descripción:** `Obtiene información detallada de un usuario.`
+
+* **Ejemplo:**
+
+`/acceso/6502abc1234567890abcdef1`
+
+
+* **Respuesta (200):**
+
+```json
+{
+  "_id": "6502abc1234567890abcdef1",
+  "nombre": "Pedro",
+  "apellido": "Morales",
+  "correo": "pedro.morales@example.com",
+  "rut": "12.345.678-9"
+}
+```
+
+### 5. Actualizar Acceso por ID
+
+* **Método:** `PUT`
+* **Ruta:** `/acceso/:id`
+* **Descripción:** `Actualiza los datos del usuario.`
+
+* **Body (JSON):**
+
+```json
+{
+  "nombre": "Pedro Andrés",
+  "apellido": "Morales Soto",
+  "correo": "pedro.andres@example.com"
+}
+```
+
+* **Respuesta (200):**
+
+```json
+{
+  "message": "Usuario actualizado",
+  "usuario": {
+    "_id": "6502abc1234567890abcdef1",
+    "nombre": "Pedro Andrés",
+    "apellido": "Morales Soto",
+    "correo": "pedro.andres@example.com",
+    "rut": "12.345.678-9"
+  }
+}
+```
+
+### 6. Eliminar Acceso por ID
+
+* **Método:** `DELETE`
+* **Ruta:** ````
+* **Descripción:** `Elimina un usuario registrado en el sistema.`
+
+* **Ejemplo:**
+
+`/acceso/6502abc1234567890abcdef1`
+
+
+* **Respuesta (200):**
+
+```json
+{
+  "message": "Usuario eliminado",
+  "usuario": {
+    "_id": "6502abc1234567890abcdef1",
+    "nombre": "Pedro Andrés",
+    "apellido": "Morales Soto",
+    "correo": "pedro.andres@example.com",
+    "rut": "12.345.678-9"
+  }
+}
+```
 
 ### 🔹 Notas importantes
 
